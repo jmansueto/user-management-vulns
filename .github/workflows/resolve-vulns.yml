@@ -21,6 +21,16 @@ on:
         description: 'Maximum number of batches to process (optional, for limiting demo time)'
         required: false
         type: string
+      session_timeout:
+        description: 'Maximum seconds to wait for each session (default: 1800 = 30 minutes)'
+        required: false
+        default: '1800'
+        type: string
+      poll_interval:
+        description: 'Seconds between status polls (default: 30)'
+        required: false
+        default: '30'
+        type: string
 
 permissions:
   contents: read
@@ -62,6 +72,9 @@ jobs:
           if [ -n "${{ inputs.max_batches }}" ]; then
             CMD="$CMD --max-batches ${{ inputs.max_batches }}"
           fi
+          
+          CMD="$CMD --session-timeout ${{ inputs.session_timeout }}"
+          CMD="$CMD --poll-interval ${{ inputs.poll_interval }}"
           
           echo "command=$CMD" >> $GITHUB_OUTPUT
       
