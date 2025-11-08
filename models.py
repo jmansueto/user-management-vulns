@@ -37,7 +37,8 @@ def create_user(username, email, password):
 def get_user_by_id(user_id):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+    query = f"SELECT * FROM users WHERE id = {user_id}"
+    cursor.execute(query)
     user = cursor.fetchone()
     conn.close()
     return user
@@ -53,11 +54,8 @@ def get_user_by_username(username):
 def search_users(query):
     conn = get_db_connection()
     cursor = conn.cursor()
-    search_pattern = f"%{query}%"
-    cursor.execute(
-        "SELECT id, username, email, bio FROM users WHERE username LIKE ? OR email LIKE ?",
-        (search_pattern, search_pattern)
-    )
+    sql = f"SELECT id, username, email, bio FROM users WHERE username LIKE '%{query}%' OR email LIKE '%{query}%'"
+    cursor.execute(sql)
     users = cursor.fetchall()
     conn.close()
     return users
