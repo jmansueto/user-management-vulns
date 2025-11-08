@@ -1,9 +1,6 @@
 name: CodeQL Security Analysis
 
 on:
-  pull_request:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
