@@ -1,0 +1,153 @@
+2025-11-08 14:56:28,621 - INFO - Auto-detected SARIF file: codeql-results/results-19197188373.sarif
+2025-11-08 14:56:28,622 - INFO - ================================================================================
+2025-11-08 14:56:28,622 - INFO - Starting Vulnerability Resolution Process
+2025-11-08 14:56:28,622 - INFO - ================================================================================
+2025-11-08 14:56:28,622 - INFO - SARIF file: codeql-results/results-19197188373.sarif
+2025-11-08 14:56:28,622 - INFO - Repository: https://github.com/your-username/your-repo
+2025-11-08 14:56:28,622 - INFO - Batch size: 2
+2025-11-08 14:56:28,622 - INFO - Dry run: True
+2025-11-08 14:56:28,622 - INFO - Max batches: unlimited
+2025-11-08 14:56:28,622 - INFO - ================================================================================
+2025-11-08 14:56:28,622 - INFO - Parsing SARIF file...
+2025-11-08 14:56:28,625 - INFO - Found 7 unique vulnerabilities
+2025-11-08 14:56:28,625 - INFO - Creating batches...
+2025-11-08 14:56:28,625 - INFO - Created 4 batches
+2025-11-08 14:56:28,625 - INFO - Saved batch metadata to batches.json
+2025-11-08 14:56:28,625 - INFO - ================================================================================
+2025-11-08 14:56:28,625 - INFO - DRY RUN MODE - No API calls will be made
+2025-11-08 14:56:28,625 - INFO - ================================================================================
+2025-11-08 14:56:28,625 - INFO - 
+Batch 1:
+2025-11-08 14:56:28,625 - INFO -   ID: 2effe878
+2025-11-08 14:56:28,625 - INFO -   Bucket: bucket_c
+2025-11-08 14:56:28,625 - INFO -   PR Title: CodeQL issue fix: Incomplete URL substring sanitization in vulnerability-resolver/devin_api_client.py
+2025-11-08 14:56:28,625 - INFO -   Vulnerabilities: 1
+2025-11-08 14:56:28,625 - INFO -   Files: vulnerability-resolver/devin_api_client.py
+2025-11-08 14:56:28,625 - INFO -   Issue Types: Incomplete URL substring sanitization
+2025-11-08 14:56:28,625 - INFO - 
+Batch 2:
+2025-11-08 14:56:28,625 - INFO -   ID: 3634466d
+2025-11-08 14:56:28,625 - INFO -   Bucket: bucket_c
+2025-11-08 14:56:28,626 - INFO -   PR Title: CodeQL issue fix: Uncontrolled data used in path expression, Reflected server-side cross-site scripting in routes/users.py, routes/profile.py
+2025-11-08 14:56:28,626 - INFO -   Vulnerabilities: 2
+2025-11-08 14:56:28,626 - INFO -   Files: routes/users.py, routes/profile.py
+2025-11-08 14:56:28,626 - INFO -   Issue Types: Uncontrolled data used in path expression, Reflected server-side cross-site scripting
+2025-11-08 14:56:28,626 - INFO - 
+Batch 3:
+2025-11-08 14:56:28,626 - INFO -   ID: aaa29009
+2025-11-08 14:56:28,626 - INFO -   Bucket: bucket_c
+2025-11-08 14:56:28,626 - INFO -   PR Title: CodeQL issue fix: Code injection, Information exposure through an exception in routes/profile.py
+2025-11-08 14:56:28,626 - INFO -   Vulnerabilities: 2
+2025-11-08 14:56:28,626 - INFO -   Files: routes/profile.py
+2025-11-08 14:56:28,626 - INFO -   Issue Types: Code injection, Information exposure through an exception
+2025-11-08 14:56:28,626 - INFO - 
+Batch 4:
+2025-11-08 14:56:28,626 - INFO -   ID: 599e7182
+2025-11-08 14:56:28,626 - INFO -   Bucket: bucket_c
+2025-11-08 14:56:28,626 - INFO -   PR Title: CodeQL issue fix: Use of a broken or weak cryptographic hashing algorithm on sensitive data, Flask app is run in debug mode in app.py, auth.py
+2025-11-08 14:56:28,626 - INFO -   Vulnerabilities: 2
+2025-11-08 14:56:28,626 - INFO -   Files: app.py, auth.py
+2025-11-08 14:56:28,626 - INFO -   Issue Types: Use of a broken or weak cryptographic hashing algorithm on sensitive data, Flask app is run in debug mode
+2025-11-08 14:56:28,626 - INFO - 
+Results saved to results.json
+2025-11-08 14:57:25,305 - INFO - Auto-detected SARIF file: codeql-results/results-19197188373.sarif
+2025-11-08 14:57:25,306 - INFO - Initialized Devin API client
+2025-11-08 14:57:25,306 - INFO - ================================================================================
+2025-11-08 14:57:25,306 - INFO - Starting Vulnerability Resolution Process
+2025-11-08 14:57:25,306 - INFO - ================================================================================
+2025-11-08 14:57:25,306 - INFO - SARIF file: codeql-results/results-19197188373.sarif
+2025-11-08 14:57:25,306 - INFO - Repository: https://github.com/your-username/your-repo
+2025-11-08 14:57:25,306 - INFO - Batch size: 2
+2025-11-08 14:57:25,306 - INFO - Dry run: False
+2025-11-08 14:57:25,306 - INFO - Max batches: 2
+2025-11-08 14:57:25,306 - INFO - ================================================================================
+2025-11-08 14:57:25,306 - INFO - Parsing SARIF file...
+2025-11-08 14:57:25,308 - INFO - Found 7 unique vulnerabilities
+2025-11-08 14:57:25,308 - INFO - Creating batches...
+2025-11-08 14:57:25,309 - INFO - Created 4 batches
+2025-11-08 14:57:25,309 - INFO - Limited to 2 batches (max_batches=2)
+2025-11-08 14:57:25,309 - INFO - Saved batch metadata to batches.json
+2025-11-08 14:57:25,309 - INFO - ================================================================================
+2025-11-08 14:57:25,309 - INFO - Processing batches with Devin API...
+2025-11-08 14:57:25,309 - INFO - ================================================================================
+2025-11-08 14:57:25,309 - INFO - 
+================================================================================
+2025-11-08 14:57:25,309 - INFO - Processing Batch 1/2
+2025-11-08 14:57:25,309 - INFO - ================================================================================
+2025-11-08 14:57:25,309 - INFO - PR Title: CodeQL issue fix: Incomplete URL substring sanitization in vulnerability-resolver/devin_api_client.py
+2025-11-08 14:57:25,309 - INFO - Bucket: bucket_c
+2025-11-08 14:57:25,309 - INFO - Vulnerabilities: 1
+2025-11-08 14:57:25,309 - INFO - Files: vulnerability-resolver/devin_api_client.py
+2025-11-08 14:57:26,357 - INFO - Created session: devin-eef62b0cea7a45dbb1caf58d9c854cf9
+2025-11-08 14:57:26,357 - INFO - Waiting for session to complete...
+2025-11-08 15:25:24,466 - INFO - Auto-detected SARIF file: codeql-results/results-19197283329.sarif
+2025-11-08 15:25:24,467 - INFO - Initialized Devin API client
+2025-11-08 15:25:24,467 - INFO - ================================================================================
+2025-11-08 15:25:24,467 - INFO - Starting Vulnerability Resolution Process
+2025-11-08 15:25:24,467 - INFO - ================================================================================
+2025-11-08 15:25:24,467 - INFO - SARIF file: codeql-results/results-19197283329.sarif
+2025-11-08 15:25:24,467 - INFO - Repository: https://github.com/your-username/your-repo
+2025-11-08 15:25:24,467 - INFO - Batch size: 1
+2025-11-08 15:25:24,467 - INFO - Dry run: False
+2025-11-08 15:25:24,467 - INFO - Max batches: 2
+2025-11-08 15:25:24,467 - INFO - ================================================================================
+2025-11-08 15:25:24,467 - INFO - Parsing SARIF file...
+2025-11-08 15:25:24,469 - INFO - Found 5 unique vulnerabilities
+2025-11-08 15:25:24,469 - INFO - Creating batches...
+2025-11-08 15:25:24,469 - INFO - Created 5 batches
+2025-11-08 15:25:24,469 - INFO - Limited to 2 batches (max_batches=2)
+2025-11-08 15:25:24,471 - INFO - Saved batch metadata to batches.json
+2025-11-08 15:25:24,471 - INFO - ================================================================================
+2025-11-08 15:25:24,471 - INFO - Processing batches with Devin API...
+2025-11-08 15:25:24,471 - INFO - ================================================================================
+2025-11-08 15:25:24,471 - INFO - 
+================================================================================
+2025-11-08 15:25:24,471 - INFO - Processing Batch 1/2
+2025-11-08 15:25:24,471 - INFO - ================================================================================
+2025-11-08 15:25:24,471 - INFO - PR Title: CodeQL issue fix: SQL query built from user-controlled sources in models.py
+2025-11-08 15:25:24,471 - INFO - Bucket: bucket_a
+2025-11-08 15:25:24,471 - INFO - Vulnerabilities: 1
+2025-11-08 15:25:24,471 - INFO - Files: models.py
+2025-11-08 15:25:25,740 - INFO - Created session: devin-fefe3f9efdfe4c84a7db356d32c79ab0
+2025-11-08 15:25:25,740 - INFO - Waiting for session to complete...
+2025-11-08 15:36:09,174 - INFO - Auto-detected SARIF file: codeql-results/results-19197283329.sarif
+2025-11-08 15:36:09,174 - INFO - Initialized Devin API client
+2025-11-08 15:36:09,174 - INFO - ================================================================================
+2025-11-08 15:36:09,174 - INFO - Starting Vulnerability Resolution Process
+2025-11-08 15:36:09,174 - INFO - ================================================================================
+2025-11-08 15:36:09,174 - INFO - SARIF file: codeql-results/results-19197283329.sarif
+2025-11-08 15:36:09,174 - INFO - Repository: https://github.com/your-username/your-repo
+2025-11-08 15:36:09,174 - INFO - Batch size: 1
+2025-11-08 15:36:09,174 - INFO - Dry run: False
+2025-11-08 15:36:09,174 - INFO - Max batches: 2
+2025-11-08 15:36:09,175 - INFO - ================================================================================
+2025-11-08 15:36:09,175 - INFO - Parsing SARIF file...
+2025-11-08 15:36:09,176 - INFO - Found 5 unique vulnerabilities
+2025-11-08 15:36:09,177 - INFO - Creating batches...
+2025-11-08 15:36:09,177 - INFO - Created 5 batches
+2025-11-08 15:36:09,177 - INFO - Limited to 2 batches (max_batches=2)
+2025-11-08 15:36:09,177 - INFO - Saved batch metadata to batches.json
+2025-11-08 15:36:09,177 - INFO - ================================================================================
+2025-11-08 15:36:09,177 - INFO - Processing batches with Devin API...
+2025-11-08 15:36:09,177 - INFO - ================================================================================
+2025-11-08 15:36:09,177 - INFO - 
+================================================================================
+2025-11-08 15:36:09,177 - INFO - Processing Batch 1/2
+2025-11-08 15:36:09,177 - INFO - ================================================================================
+2025-11-08 15:36:09,177 - INFO - PR Title: CodeQL issue fix: SQL query built from user-controlled sources in models.py
+2025-11-08 15:36:09,178 - INFO - Bucket: bucket_a
+2025-11-08 15:36:09,178 - INFO - Vulnerabilities: 1
+2025-11-08 15:36:09,178 - INFO - Files: models.py
+2025-11-08 15:36:10,589 - INFO - Created session: devin-dbed9ac419d24319aec7159c53b31155
+2025-11-08 15:36:10,589 - INFO - Waiting for session to complete...
+2025-11-08 15:39:46,531 - INFO - ✓ PR created: https://github.com/jmansueto/user-management-vulns/pull/12
+2025-11-08 15:39:46,534 - INFO - 
+================================================================================
+2025-11-08 15:39:46,534 - INFO - Processing Batch 2/2
+2025-11-08 15:39:46,534 - INFO - ================================================================================
+2025-11-08 15:39:46,534 - INFO - PR Title: CodeQL issue fix: SQL query built from user-controlled sources in models.py
+2025-11-08 15:39:46,534 - INFO - Bucket: bucket_a
+2025-11-08 15:39:46,534 - INFO - Vulnerabilities: 1
+2025-11-08 15:39:46,534 - INFO - Files: models.py
+2025-11-08 15:39:47,259 - INFO - Created session: devin-201e0cdb763c494ea82bddde2e3d8faa
+2025-11-08 15:39:47,260 - INFO - Waiting for session to complete...

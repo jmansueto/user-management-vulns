@@ -1,0 +1,60 @@
+[
+  {
+    "batch_id": "7dee8fe8",
+    "bucket": "bucket_a",
+    "pr_title": "CodeQL issue fix: SQL query built from user-controlled sources in models.py",
+    "vulnerabilities": [
+      {
+        "rule_id": "py/sql-injection",
+        "rule_name": "SQL query built from user-controlled sources",
+        "cwe": "CWE-089",
+        "severity": "medium",
+        "file_path": "models.py",
+        "line_number": 41,
+        "message": "This SQL query depends on a [user-provided value](1).",
+        "fingerprint": "dd543bbd74d2dc8dd0463b5acf2fbe18"
+      }
+    ],
+    "summary": {
+      "count": 1,
+      "files": [
+        "models.py"
+      ],
+      "issue_types": [
+        "SQL query built from user-controlled sources"
+      ],
+      "severities": [
+        "medium"
+      ]
+    }
+  },
+  {
+    "batch_id": "b1966f4d",
+    "bucket": "bucket_a",
+    "pr_title": "CodeQL issue fix: SQL query built from user-controlled sources in models.py",
+    "vulnerabilities": [
+      {
+        "rule_id": "py/sql-injection",
+        "rule_name": "SQL query built from user-controlled sources",
+        "cwe": "CWE-089",
+        "severity": "medium",
+        "file_path": "models.py",
+        "line_number": 58,
+        "message": "This SQL query depends on a [user-provided value](1).",
+        "fingerprint": "0b27e81ffbd70d2dc800a4f7b5f329cf"
+      }
+    ],
+    "summary": {
+      "count": 1,
+      "files": [
+        "models.py"
+      ],
+      "issue_types": [
+        "SQL query built from user-controlled sources"
+      ],
+      "severities": [
+        "medium"
+      ]
+    }
+  }
+]
