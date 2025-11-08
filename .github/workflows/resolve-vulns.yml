@@ -1,0 +1,119 @@
+name: Resolve CodeQL Vulnerabilities
+
+on:
+  workflow_dispatch:
+    inputs:
+      sarif_path:
+        description: 'Path to SARIF file (optional, defaults to most recent in codeql-results/)'
+        required: false
+        type: string
+      batch_size:
+        description: 'Number of vulnerabilities per batch'
+        required: false
+        default: '4'
+        type: string
+      dry_run:
+        description: 'Dry run mode (output batches without calling Devin API)'
+        required: false
+        default: true
+        type: boolean
+      max_batches:
+        description: 'Maximum number of batches to process (optional, for limiting demo time)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  resolve-vulnerabilities:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r vulnerability-resolver/requirements.txt
+      
+      - name: Build orchestrator command
+        id: build_command
+        run: |
+          CMD="python vulnerability-resolver/orchestrator.py --repo-url https://github.com/${{ github.repository }}"
+          
+          if [ -n "${{ inputs.sarif_path }}" ]; then
+            CMD="$CMD --sarif ${{ inputs.sarif_path }}"
+          fi
+          
+          CMD="$CMD --batch-size ${{ inputs.batch_size }}"
+          
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            CMD="$CMD --dry-run"
+          fi
+          
+          if [ -n "${{ inputs.max_batches }}" ]; then
+            CMD="$CMD --max-batches ${{ inputs.max_batches }}"
+          fi
+          
+          echo "command=$CMD" >> $GITHUB_OUTPUT
+      
+      - name: Run vulnerability resolver
+        env:
+          DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Running: ${{ steps.build_command.outputs.command }}"
+          ${{ steps.build_command.outputs.command }}
+      
+      - name: Upload batches.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batches-metadata
+          path: batches.json
+          if-no-files-found: warn
+      
+      - name: Upload results.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results.json
+          if-no-files-found: warn
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resolver-logs
+          path: resolver.log
+          if-no-files-found: warn
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Vulnerability Resolution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f results.json ]; then
+            echo "### Results" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat results.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f batches.json ]; then
+            BATCH_COUNT=$(jq '. | length' batches.json)
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Batches Created: $BATCH_COUNT" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Download the artifacts to view detailed batch information." >> $GITHUB_STEP_SUMMARY
+          fi
