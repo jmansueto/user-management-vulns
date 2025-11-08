@@ -10,7 +10,7 @@ on:
       batch_size:
         description: 'Number of vulnerabilities per batch'
         required: false
-        default: '4'
+        default: '2'
         type: string
       dry_run:
         description: 'Dry run mode (output batches without calling Devin API)'

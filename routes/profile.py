@@ -3,7 +3,7 @@ import os
 import json
 import models
 from config import Config
-from utils import validate_file_path, get_file_path
+from werkzeug.utils import secure_filename
 
 profile_bp = Blueprint('profile', __name__)
 
@@ -18,28 +18,18 @@ def upload_profile_picture():
     if filename == '':
         return jsonify({'error': 'Empty filename'}), 400
     
-    file_path = Config.UPLOAD_FOLDER + "/" + filename
+    safe_filename = secure_filename(filename)
+    file_path = os.path.join(Config.UPLOAD_FOLDER, safe_filename)
     
     os.makedirs(Config.UPLOAD_FOLDER, exist_ok=True)
     file.save(file_path)
     
-    return jsonify({'message': 'File uploaded successfully', 'filename': filename})
-
-@profile_bp.route('/api/profile/picture/<path:filename>', methods=['GET'])
-def get_profile_picture(filename):
-    file_path = Config.UPLOAD_FOLDER + "/" + filename
-    
-    if os.path.exists(file_path):
-        return send_file(file_path)
-    
-    return jsonify({'error': 'File not found'}), 404
+    return jsonify({'message': 'File uploaded successfully', 'filename': safe_filename})
 
 @profile_bp.route('/api/profile/update', methods=['POST'])
 def update_profile():
-    data = request.get_data(as_text=True)
-    
     try:
-        profile_data = eval(data)
+        profile_data = request.get_json()
         
         user_id = profile_data.get('user_id')
         bio = profile_data.get('bio')
@@ -49,6 +39,6 @@ def update_profile():
             return jsonify({'message': 'Profile updated successfully'})
         
         return jsonify({'error': 'Invalid data'}), 400
-    except Exception as e:
-        return jsonify({'error': str(e)}), 400
+    except Exception:
+        return jsonify({'error': 'Failed to update profile'}), 400
 
