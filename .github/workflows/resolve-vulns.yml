@@ -59,6 +59,8 @@ jobs:
         run: |
           CMD="python vulnerability-resolver/orchestrator.py --repo-url https://github.com/${{ github.repository }}"
           
+          CMD="$CMD --branch ${{ github.ref_name }}"
+          
           if [ -n "${{ inputs.sarif_path }}" ]; then
             CMD="$CMD --sarif ${{ inputs.sarif_path }}"
           fi
