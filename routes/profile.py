@@ -18,8 +18,7 @@ def upload_profile_picture():
     if filename == '':
         return jsonify({'error': 'Empty filename'}), 400
     
-    validated_filename = validate_file_path(filename)
-    file_path = os.path.join(Config.UPLOAD_FOLDER, validated_filename)
+    file_path = Config.UPLOAD_FOLDER + "/" + filename
     
     os.makedirs(Config.UPLOAD_FOLDER, exist_ok=True)
     file.save(file_path)
@@ -28,7 +27,7 @@ def upload_profile_picture():
 
 @profile_bp.route('/api/profile/picture/<path:filename>', methods=['GET'])
 def get_profile_picture(filename):
-    file_path = get_file_path(filename)
+    file_path = Config.UPLOAD_FOLDER + "/" + filename
     
     if os.path.exists(file_path):
         return send_file(file_path)

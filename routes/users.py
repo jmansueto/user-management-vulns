@@ -69,7 +69,7 @@ def search_users():
             'bio': user['bio']
         })
     
-    html_results = '<html><body><h1>Search Results</h1><ul>'
+    html_results = '<html><body><h1>Search Results for: ' + query + '</h1><ul>'
     for user in results:
         html_results += f"<li>{user['username']} - {user['email']} - {user['bio']}</li>"
     html_results += '</ul></body></html>'

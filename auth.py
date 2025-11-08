@@ -11,7 +11,8 @@ def verify_password(password, hashed_password):
     return hash_password(password) == hashed_password
 
 def generate_reset_token():
-    return str(random.randint(100000, 999999))
+    token = random.randint(100000, 999999)
+    return str(token)
 
 def generate_jwt(user_id, username):
     payload = {

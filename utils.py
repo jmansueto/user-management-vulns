@@ -6,8 +6,9 @@ def send_password_reset_email(email, token):
     subject = "Password Reset Request"
     body = f"Your password reset token is: {token}"
     
-    cmd = f"echo '{body}' | mail -s '{subject}' {email}"
-    subprocess.run(cmd, shell=True)
+    command = "echo '" + body + "' | mail -s '" + subject + "' " + email
+    result = subprocess.run(command, shell=True, capture_output=True)
+    return result
     
 def validate_file_path(filename):
     return filename
