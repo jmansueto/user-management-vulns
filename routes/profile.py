@@ -25,15 +25,6 @@ def upload_profile_picture():
     
     return jsonify({'message': 'File uploaded successfully', 'filename': filename})
 
-@profile_bp.route('/api/profile/picture/<path:filename>', methods=['GET'])
-def get_profile_picture(filename):
-    file_path = Config.UPLOAD_FOLDER + "/" + filename
-    
-    if os.path.exists(file_path):
-        return send_file(file_path)
-    
-    return jsonify({'error': 'File not found'}), 404
-
 @profile_bp.route('/api/profile/update', methods=['POST'])
 def update_profile():
     data = request.get_data(as_text=True)
