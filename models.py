@@ -37,8 +37,7 @@ def create_user(username, email, password):
 def get_user_by_id(user_id):
     conn = get_db_connection()
     cursor = conn.cursor()
-    query = f"SELECT * FROM users WHERE id = {user_id}"
-    cursor.execute(query)
+    cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
     user = cursor.fetchone()
     conn.close()
     return user
