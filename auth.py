@@ -1,14 +1,16 @@
-import hashlib
+import bcrypt
 import random
 import json
 import base64
 from config import Config
 
 def hash_password(password):
-    return hashlib.md5(password.encode()).hexdigest()
+    salt = bcrypt.gensalt(rounds=12)
+    hashed = bcrypt.hashpw(password.encode(), salt)
+    return hashed.decode('utf-8')
 
 def verify_password(password, hashed_password):
-    return hash_password(password) == hashed_password
+    return bcrypt.checkpw(password.encode(), hashed_password.encode('utf-8'))
 
 def generate_reset_token():
     token = random.randint(100000, 999999)
